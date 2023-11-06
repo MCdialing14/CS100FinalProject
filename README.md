@@ -16,17 +16,8 @@
 > * All project phases are to be submitted to this GitHub repository. You should modify this README file to reflect the different phases of the project. In addition, you should regularly hold sprint meetings with your group. You will need to hold two to three scrum/check-in meetings with your lab TA/reader at different times in addition to the final demo.
 
 ## Project Description
- > Your project description should summarize the project you are proposing. Be sure to include:
- > * Why is it important or interesting to you?
-It's interesting to us because we all have an interest of making games, and want to see how we can maximize the experience for the player. 
- > * What languages/tools/technologies do you plan to use? (This list may change over the course of the project)
-We plan to use C++, C#, and Unity to make our project. 
- > * What will be the input/output of your project?
-The input will be boxes sliding across the screen and the output will be boxes merging and adding up. 
- > * What are the features that the project provides?
-The features the project provides are the ability to restart the game when the player loses, sound effects, music, and a settings button to change the volume of the music and sound effects. 
- > This description should be in enough detail that the TA/instructor can determine the complexity of the project and if it is sufficient for the team members to complete in the time allotted. 
- > 
+A 2048 C++ game is interesting to us because we all have an interest of making games, and want to see how we can maximize the experience for the player while using terminal based navigation. We plan to use C++ for our project, while Untiy and other options were considered, we decided the best course of action was C++. The input will be boxes sliding across the screen and the output will be boxes merging and adding up. We will also output a game over, leaderboard, and setting screens which are more like features. The features the project provides are the ability to restart the game when the player loses, an aracde style leaderboard, score keeping, and a quit game option in game.
+
  > You also need to set up an empty project board using GitHub projects (board view). Make sure you add the board under your project repository. You should also have a Product Backlog and In testing columns added.
  > ## Phase II
  > In addition to completing the "User Interface Specification" and "Class Diagram" sections below, you will need to:
