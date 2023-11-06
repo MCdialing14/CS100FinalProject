@@ -34,7 +34,7 @@ A 2048 C++ game is interesting to us because we all have an interest of making g
  > Include a navigation diagram for your screens and the layout of each of those screens as desribed below. For all the layouts/diagrams, you can use any tool such as PowerPoint or a drawing program. (Specification requirement is adapted from [this template](https://redirect.cs.umbc.edu/~mgrass2/cmsc345/Template_UI.doc))
 
 ### Navigation Diagram
-> ![Navigation Diagram](/final-project-msapu001-nudri001-mcede002-mcarl042/Diagrams/NavigationDiagram.png?raw=true "Navigation Diagram")
+> ![Navigation Diagram](/Diagrams/NavigationDiagram.png?raw=true "Navigation Diagram")
 
 ### Screen Layouts
 > Include the layout of each of your screens. The layout should describe the screen’s major components such as menus and prompts for user inputs, expected output, and buttons (if applicable). Explain what is on the layout, and the purpose of each menu item, button, etc. If many screens share the same layout, start by describing the general layout and then list the screens that will be using that layout and the differences between each of them.
