@@ -6,14 +6,15 @@ A 2048 C++ game is interesting to us because we all have an interest of making g
 
 ## User Interface Specification
 ### Navigation Diagram
-![Navigation Diagram](/Diagrams/NavigationDiagram.png?raw=true "Navigation Diagram")
+<p align="center">
+  <img src="/Diagrams/NavigationDiagram.png?raw=true" alt="Navigation Diagram" height="350">
+</p>
+<p align="center">Navigation Diagram</p>
 <p>This diagram displays how our game screens flow into each other. User's enter the program from where "start" is located. From here they can choose to start a new game, go into non-game menus like settings/ leaderboard/ credits, or quit the program. Some menus such as the settings or credits are simple and lead back into menu while others may have a circular pattern like the game and game over where users can keep restarting until they wish to break out by returning to mean or going to the leaderboard/ credits which also ultimately lead to the main menu. The goal is to have all paths lead back to the main menu so the user can easily quit the program or adjust settings at any time.</p>
 
 ### Screen Layouts
-<div style="display: flex; justify-content: center;">
- <img src="/Diagrams/ScreenLayout/MainMenu.png?raw=true" alt="Main Menu" height="350">
- <p>This menu is intended to be a center of control for the game. From here, you can input which menu you would like to go to or quit the program. Many menus lead back to here.</p>
-</div>
+<img src="/Diagrams/ScreenLayout/MainMenu.png?raw=true" alt="Main Menu" height="350">
+<p>This menu is intended to be a center of control for the game. From here, you can input which menu you would like to go to or quit the program. Many menus lead back to here.</p>
 
 <img src="/Diagrams/ScreenLayout/GameMenu.png?raw=true" alt="Game Menu" height="350">
 <p>This menu is where the actual gameplay will occur. The user will input which direction they would like the blocks to slide, and they will either combine or collide, and the game area will update to reflect that. The user will also have the option to quit to the menu available at all times.</p>
