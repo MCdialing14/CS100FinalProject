@@ -12,6 +12,10 @@ A 2048 C++ game is interesting to us because we all have an interest of making g
 > Include the layout of each of your screens. The layout should describe the screen’s major components such as menus and prompts for user inputs, expected output, and buttons (if applicable). Explain what is on the layout, and the purpose of each menu item, button, etc. If many screens share the same layout, start by describing the general layout and then list the screens that will be using that layout and the differences between each of them.
 ![Credits Menu](/Diagrams/ScreenLayout/CreditsMenu.png?raw=true "Credits Menu")
 ![Game Menu](/Diagrams/ScreenLayout/GameMenu.png?raw=true "Game Menu")
+![Game Over Menu](/Diagrams/ScreenLayout/GameOverMenu.png?raw=true "Game Over Menu")
+![Leaderboard Menu](/Diagrams/ScreenLayout/LeaderboardMenu.png?raw=true "Leaderboard Menu")
+![Main Menu Menu](/Diagrams/ScreenLayout/MainMenu.png?raw=true "Main Menu")
+![Setting Menu](/Diagrams/ScreenLayout/SettingsMenu.png?raw=true "Settings Menu")
 
 ## Class Diagram
  > Include a **class diagram(s)** for your project and a **description** of the diagram(s). Your class diagram(s) should include all the main classes you plan for the project. This should be in sufficient detail that another group could pick up the project this point and successfully complete it. Use proper UML notation (as discussed in the course slides).
