@@ -13,7 +13,7 @@ A 2048 C++ game is interesting to us because we all have an interest of making g
 <div style="display: flex; justify-content: center;">
  <img src="/Diagrams/ScreenLayout/MainMenu.png?raw=true" alt="Main Menu" height="350">
  <p>This menu is intended to be a center of control for the game. From here, you can input which menu you would like to go to or quit the program. Many menus lead back to here.</p>
- </div>
+</div>
 
 <img src="/Diagrams/ScreenLayout/GameMenu.png?raw=true" alt="Game Menu" height="350">
 <p>This menu is where the actual gameplay will occur. The user will input which direction they would like the blocks to slide, and they will either combine or collide, and the game area will update to reflect that. The user will also have the option to quit to the menu available at all times.</p>
