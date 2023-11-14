@@ -1,4 +1,4 @@
-#include "Board.h"
+#include "../header/Board.h"
 #include <stdexcept>
 
 /// <summary>
@@ -89,9 +89,9 @@ void Board::AddBlock(Block* block, Coordinate coord)
 	int x = coord.GetX();
 	int y = coord.GetY();
 
-	if (board[x][y] == nullptr)
+	if (grid[x][y] == nullptr)
 	{
-		board[x][y] = block;
+		grid[x][y] = block;
 	}
 	else
 	{
@@ -113,7 +113,7 @@ bool Board::IsBoardFull()
 	{
 		for (int y = 0; y < COLUMNS; y++)
 		{
-			if (board[x][y] == nullptr)
+			if (grid[x][y] == nullptr)
 			{
 				return false;
 			}

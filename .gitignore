@@ -1,1 +1,16 @@
 *.vs/
+bin/
+CMakeFiles/
+CMakeCache.txt
+Makefile
+*.cmake
+*.a
+*.filters
+*.sln
+*.vcxproj
+lib/
+out/
+src/Debug/
+src/simpleLibrary.dir/
+tests/runAllTests.dir/
+x64/

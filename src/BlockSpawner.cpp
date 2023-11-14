@@ -1,4 +1,4 @@
-#include "BlockSpawner.h"
+#include "../header/BlockSpawner.h"
 #include <random>
 #include <vector>
 
@@ -21,8 +21,9 @@ void BlockSpawner::SpawnBlock()
 	Block* newBlock = new Block(randomBlockVal);
 
 	// Place block at random space
-	Coordinate randomCoord = spacesDist(gen);
-	board->AddBlock(newBlock, randomCoord)
+	int randomSpaceIndex = spacesDist(gen);
+	Coordinate randomCoord = emptySpaces.at(randomSpaceIndex);
+	board->AddBlock(newBlock, randomCoord);
 }
 
 /// <summary>

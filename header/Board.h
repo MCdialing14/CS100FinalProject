@@ -7,8 +7,8 @@
 class Board
 {
 private:
-	const int ROWS = 4;
-	const int COLUMNS = 4;
+	static constexpr int ROWS = 4;
+	static constexpr int COLUMNS = 4;
 	Block* grid[ROWS][COLUMNS] = {};
 public:
 	Board();
