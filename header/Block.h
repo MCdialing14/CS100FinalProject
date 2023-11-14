@@ -7,6 +7,7 @@ private:
 	int value = 0;
 	
 public:
+	Block(int value) : value(value) {};
 	int GetValue()
 	{
 		return value;

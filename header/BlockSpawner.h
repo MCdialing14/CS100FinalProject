@@ -15,7 +15,7 @@ public:
 	void SpawnBlock();
 
 private:
-	vector<Coordinate> GetEmptyCoords(Board*);
+	std::vector<Coordinate> GetEmptyCoords();
 };
 
 #endif // !BLOCKSPAWNER_H

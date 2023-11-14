@@ -7,10 +7,17 @@
 class Board
 {
 private:
-	Block[4][4] grid;
+	const int ROWS = 4;
+	const int COLUMNS = 4;
+	Block* grid[ROWS][COLUMNS] = {};
 public:
+	Board();
+	~Board();
 	int GetScore();
-	void AddBlock(Block, Coordinate);
+	const int GetRows();
+	const int GetColumns();
+	Block* GetBlock(int x, int y);
+	void AddBlock(Block*, Coordinate);
 	bool IsBoardFull();
 };
 
