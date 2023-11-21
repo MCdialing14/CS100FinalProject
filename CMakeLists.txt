@@ -1,12 +1,14 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 3.2)
 
-project(menu-tests)
+project(overall-tests)
 
 ADD_SUBDIRECTORY(googletest)
 
 ADD_EXECUTABLE(test
     test.cpp
     menu.cpp
+    credits.cpp
+    settings.cpp
 )
 
 TARGET_LINK_LIBRARIES(test gtest)
