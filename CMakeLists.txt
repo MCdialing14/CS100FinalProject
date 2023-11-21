@@ -7,8 +7,8 @@ ADD_SUBDIRECTORY(googletest)
 ADD_EXECUTABLE(test
     test.cpp
     menu.cpp
-    credits.cpp
-    settings.cpp
+    Credits/credits.cpp
+    Settings/settings.cpp
 )
 
 TARGET_LINK_LIBRARIES(test gtest)

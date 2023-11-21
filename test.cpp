@@ -2,8 +2,8 @@
 #include <iostream>
 #include <string>
 #include "menu.hpp"
-#include "settings.hpp"
-#include "credits.hpp"
+#include "Settings/settings.hpp"
+#include "Credits/credits.hpp"
 
 //Main menu tests
 TEST(MenuTests, CheckMenuDisplay) {
