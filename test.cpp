@@ -1,8 +1,16 @@
 #include "gtest/gtest.h"
 #include <iostream>
 #include <string>
+#include "menu.hpp"
 #include "settings.hpp"
 #include "credits.hpp"
+
+//Main menu tests
+TEST(MenuTests, CheckMenuDisplay) {
+    Menu testMenu;
+    string testString = "2048 \n \n Start Game \n Settings \n Leaderboard \n Quit";
+    EXPECT_EQ(testString, testMenu.getMenuDisplay());
+}
 
 //pass
 TEST(CreditsTest, CheckCreditDisplay) {
