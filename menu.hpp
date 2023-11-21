@@ -2,16 +2,9 @@
 #define MENU_HPP
 #include <string>
 #include <iostream>
+#include "inputmanager.hpp"
 
 using namespace std;
-
-class InputManager {
-    protected:
-        char userInputChar;
-        int userInputInt;
-    public:
-        virtual void getInput() = 0;
-};
 
 class Menu : public InputManager {
     private:
