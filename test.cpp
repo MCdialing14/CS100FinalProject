@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
 #include <iostream>
 #include <string>
-#include "menu.hpp"
+#include "MainMenu/menu.hpp"
 #include "Settings/settings.hpp"
 #include "Credits/credits.hpp"
 

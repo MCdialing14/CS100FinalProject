@@ -6,7 +6,7 @@ ADD_SUBDIRECTORY(googletest)
 
 ADD_EXECUTABLE(test
     test.cpp
-    menu.cpp
+    MainMenu/menu.cpp
     Credits/credits.cpp
     Settings/settings.cpp
 )
