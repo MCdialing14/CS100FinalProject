@@ -14,7 +14,8 @@ class Settings : public InputManager {
 
     public:
         void getInput();
-        void print(string &settingsDisplay);
+        char returnInput();
+        void print();
         string getSettingsDisplay(); //for testing
         void changeSoundLevel();
         void changeEffects();

@@ -4,7 +4,11 @@ void Settings::getInput() {
     cin >> userInputChar;
 }
 
-void Settings::print(string &settingsDisplay) {
+char Settings::returnInput() {
+    return userInputChar;
+}
+
+void Settings::print() {
     cout << settingsDisplay << endl;
     getInput();
 }
@@ -14,7 +18,8 @@ string Settings::getSettingsDisplay() { // for testing
 }
 
 void Settings::changeSoundLevel() {
-    this->soundLevel = 3; //hard coded value for testing
+    cin >> userInputInt;
+    this->soundLevel = userInputInt;
     return;
 }
 
