@@ -14,3 +14,5 @@ src/Debug/
 src/simpleLibrary.dir/
 tests/runAllTests.dir/
 x64/
+test
+cmake_install.cmake
