@@ -13,7 +13,7 @@ void BlockSpawner::SpawnBlock()
 	
 	// Get distribution for spaces and random values
 	std::vector<Coordinate> emptySpaces = GetEmptyCoords();
-	std::uniform_int_distribution<> spacesDist(0, emptySpaces.size());
+	std::uniform_int_distribution<> spacesDist(0, emptySpaces.size() - 1);
 	std::uniform_int_distribution<> randomValDist(1, 2);
 
 	// Creates a block with random value of 2 or 4
