@@ -16,3 +16,4 @@ tests/runAllTests.dir/
 x64/
 test
 cmake_install.cmake
+a.out
