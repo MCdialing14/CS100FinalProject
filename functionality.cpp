@@ -17,14 +17,15 @@ int main() {
 
         if(testMenu.returnInput() == 'g') { // player starts a new game
             callGameOver(testGameOver);
+            break;
         }
     }
 
     return 0;
 }
 
-void callGameOver(GameOver &gameOverObject) { // FIX
-    while((gameOverObject.returnInput() != 'g') && (gameOverObject.returnInput() != 'l') && (gameOverObject.returnInput() != 'm')) { // g = new game, l = leaderboard, m = main menu
+void callGameOver(GameOver &gameOverObject) {
+    while(gameOverObject.returnInput() != 'q') {
         gameOverObject.print();
     }
 }
