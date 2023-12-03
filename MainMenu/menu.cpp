@@ -2,7 +2,7 @@
 
 void Menu::print() {
     cout << menuDisplay << endl;
-    getInput();
+    // getInput();
 }
 
 void Menu::getInput() {

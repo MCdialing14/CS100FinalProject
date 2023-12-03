@@ -1,31 +1,77 @@
 #include "MainMenu/menu.hpp"
-#include "gameover.hpp"
+#include "Settings/settings.hpp"
+#include "Credits/credits.hpp"
+#include "GameOver/gameover.hpp"
 #include <iostream>
 #include <string>
 
 using namespace std;
 
-void callGameOver(GameOver &gameOverObject);
+char userChoice;
+
+void callSettings(Settings& gameSettings);
+void callCredits(Credits& gameCreds);
+void callGameOver(GameOver& gameOverObject);
 
 int main() {
-    Menu testMenu;
-    GameOver testGameOver;
+    Menu test;
+    Settings tested;
+    Credits testing;
+    GameOver gameOverObject;
 
-    while(testMenu.returnInput() != 'q') {
-        testMenu.print();
+    do {
+        test.print();
+        cin >> userChoice;
         cin.ignore();
 
-        if(testMenu.returnInput() == 'g') { // player starts a new game
-            callGameOver(testGameOver);
-            break;
+        if(userChoice == 'g') { //game loop
+            callGameOver(gameOverObject);
         }
-    }
+        if(userChoice == 's') { //settings loop
+            callSettings(tested);
+        }
+        if(userChoice == 'c') { //credits
+            callCredits(testing);
+        }
+    } while(userChoice != 'q');
 
     return 0;
 }
 
-void callGameOver(GameOver &gameOverObject) {
-    while(gameOverObject.returnInput() != 'q') {
+void callGameOver(GameOver& gameOverObject) {
+    while (userChoice != 'm') {
         gameOverObject.print();
+        cin >> userChoice;
+        cin.ignore();
+
+        if (userChoice == 'g') { // fix later
+            cout << "START NEW GAME HERE!" << endl;
+        }
+        if (userChoice == 'l') { // fix later
+            cout << "PRINT LEADERBOARD HERE!" << endl;
+        }
+    }
+}
+
+void callSettings(Settings& tested) {
+    while(userChoice != 'm') {
+        tested.print();
+        cin >> userChoice;
+        cin.ignore();
+
+        if(userChoice == 'v') {
+            cout << "Current Volume level: " << tested.getSoundLevel() << endl;
+            cout << "New Volume level (0-10): ";
+            tested.changeSoundLevel();
+            cout << endl;
+        }
+    }
+}
+
+void callCredits(Credits& testing) {
+    while(userChoice != 'm') {
+        testing.print();
+        cin >> userChoice;
+        cin.ignore();
     }
 }

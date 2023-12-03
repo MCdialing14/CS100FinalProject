@@ -2,11 +2,16 @@
 
 void Settings::getInput() {
     cin >> userInputChar;
+    cin.ignore();
 }
 
-void Settings::print(string &settingsDisplay) {
+char Settings::returnInput() {
+    return userInputChar;
+}
+
+void Settings::print() {
     cout << settingsDisplay << endl;
-    getInput();
+    //getInput();
 }
 
 string Settings::getSettingsDisplay() { // for testing
@@ -14,12 +19,31 @@ string Settings::getSettingsDisplay() { // for testing
 }
 
 void Settings::changeSoundLevel() {
-    this->soundLevel = 3; //hard coded value for testing
+    cin >> userInputInt;
+    cin.clear();
+    cin.ignore(256, '\n');
+
+    if(userInputInt < 0) {
+        this->soundLevel = 0;
+    }
+    else if(userInputInt > 10) {
+        this->soundLevel = 10;
+    }
+    else {
+        this->soundLevel = userInputInt;
+    }
     return;
 }
 
 void Settings::changeEffects() {
-    this->soundEffects = 0; //hard coded value for testing
+    cin >> userInputInt;
+
+    if(userInputInt == 1) {
+        this->soundEffects = !(soundEffects);
+    }
+    else if (userInputInt == 0) {
+        return;
+    }
     return;
 }
 
@@ -28,6 +52,6 @@ int Settings::getSoundLevel() {
     return this->soundLevel;
 }
 
-int Settings::getSoundEffect() {
+bool Settings::getSoundEffect() {
     return this->soundEffects;
 }
