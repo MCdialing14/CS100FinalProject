@@ -2,12 +2,12 @@
 
 void Menu::print() {
     cout << menuDisplay << endl;
-    getInput();
+    //getInput();
 }
 
 void Menu::getInput() {
-    cin.clear();
     cin >> userInputChar;
+    cin.ignore();
 }
 
 char Menu::returnInput() {
@@ -15,7 +15,7 @@ char Menu::returnInput() {
 }
 
 void Menu::clearInput() {
-    userInputChar = 'z';
+    userInputChar = '0';
 }
 
 string Menu::getMenuDisplay() { // for testing

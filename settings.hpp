@@ -8,9 +8,9 @@ using namespace std;
 
 class Settings : public InputManager {
     private:
-        string settingsDisplay = "Enter letter to change setting: \n Volume - v \n Sound Effects - e \n \n Apply changes - y \n Default - o \n Quit";
+        string settingsDisplay = "\nEnter letter to change setting: \n Volume - v \n Sound Effects - e \n \n Default - o \n Main Menu - m";
         int soundLevel = 5; //default value 1-10 levels
-        int soundEffects = 1; //default value 1-On 0-Off
+        bool soundEffects = true; //default value 1-On 0-Off
 
     public:
         void getInput();
@@ -22,7 +22,7 @@ class Settings : public InputManager {
 
         //for testing
         int getSoundLevel();
-        int getSoundEffect();
+        bool getSoundEffect();
 };
 
 #endif

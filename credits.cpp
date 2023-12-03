@@ -2,7 +2,7 @@
 
 void Credits::print() {
     cout << creditDisplay << endl;
-    getInput();
+    //getInput();
 }
 
 void Credits::getInput() {
