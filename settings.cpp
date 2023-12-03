@@ -20,7 +20,18 @@ string Settings::getSettingsDisplay() { // for testing
 
 void Settings::changeSoundLevel() {
     cin >> userInputInt;
-    this->soundLevel = userInputInt;
+    cin.clear();
+    cin.ignore(256, '\n');
+
+    if(userInputInt < 0) {
+        this->soundLevel = 0;
+    }
+    else if(userInputInt > 10) {
+        this->soundLevel = 10;
+    }
+    else {
+        this->soundLevel = userInputInt;
+    }
     return;
 }
 
@@ -28,9 +39,9 @@ void Settings::changeEffects() {
     cin >> userInputInt;
 
     if(userInputInt == 1) {
-        this->soundEffects = !(soundEffects);
+        this->soundEffects = !(getSoundEffect());
     }
-    else if (userInputInt == 0) {
+    else {
         return;
     }
     return;
@@ -43,4 +54,10 @@ int Settings::getSoundLevel() {
 
 bool Settings::getSoundEffect() {
     return this->soundEffects;
+}
+
+void Settings::changeToDefault() {
+    this->soundEffects = true;
+    this->soundLevel = 5;
+    return;
 }

@@ -19,6 +19,7 @@ class Settings : public InputManager {
         string getSettingsDisplay(); //for testing
         void changeSoundLevel();
         void changeEffects();
+        void changeToDefault();
 
         //for testing
         int getSoundLevel();

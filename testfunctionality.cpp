@@ -48,15 +48,19 @@ void callSettings(Settings& tested) {
 
         else if(userChoice == 'e') {
             cout << "Current sound effects: ";
-            if(tested.getSoundEffect() == 0) {
+            if(tested.getSoundEffect() == false) {
                 cout << "OFF" << endl;
             }
             else {
                 cout << "ON" << endl;
             }
-            cout << "Switch? 1 - Yes 0 - No:  ";
-            tested.changeSoundLevel();
+            cout << "Switch? Yes - 1 No - 0:  ";
+            tested.changeEffects();
             cout << endl;
+        }
+        else if(userChoice == 'o') {
+            cout << "Settings back to default!" << endl;
+            tested.changeToDefault();
         }
     }
 }
