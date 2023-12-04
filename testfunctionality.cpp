@@ -1,15 +1,20 @@
 #include "dummymainmenu.hpp"
 #include "settings.hpp"
 #include "credits.hpp"
+#include "gameover.hpp"
+#include "functions.h"
 #include <iostream>
 #include <string>
 
 using namespace std;
 
 char userChoice;
+int testScore;
 
 void callSettings(Settings& gameSettings);
 void callCredits(Credits& gameCreds);
+void callGame();
+void callGameOver(GameOver& gameEnd);
 
 int main() {
     Menu test;
@@ -21,11 +26,17 @@ int main() {
         cin >> userChoice;
         cin.ignore();
 
+        if(userChoice == 'g') {
+            callGame();
+        }
         if(userChoice == 's') { //settings loop
             callSettings(tested);
         }
         else if(userChoice == 'c') { //credits
             callCredits(testing);
+        }
+        else {
+            cout << "Invalid input!" << endl << endl;
         }
     } while(userChoice != 'q');
 
@@ -70,5 +81,31 @@ void callCredits(Credits& testing) {
         testing.print();
         cin >> userChoice;
         cin.ignore();
+    }
+}
+
+void callGame() {
+    GameOver tester;
+    cout << "In game, enter score to test game over/leaderboard" << endl;
+    cin >> testScore;
+    cin.ignore();
+    callGameOver(tester);
+}
+
+void callGameOver(GameOver& tester) {
+    while(userChoice != 'm') {
+        tester.print();
+        cin >> userChoice;
+        cin.ignore();
+
+        if(userChoice == 'g') {
+            callGame();
+        }
+        else if(userChoice == 'l') {
+            cout << "Call leaderboard" << endl;
+        }
+        else {
+            cout << "Invalid input!" << endl << endl;
+        }
     }
 }
