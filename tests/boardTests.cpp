@@ -1,56 +1,11 @@
 #include "gtest/gtest.h"
 #include "gmock/gmock.h"
 
-#include "../header/Block.h"
-#include "../header/Coordinate.h"
 #include "../header/Board.h"
-#include "../header/BlockSpawner.h"
-
-//-- BLOCK TESTS
-TEST(BlockTests, TestValidConstruction)
-{
-    EXPECT_NO_THROW(Block(2));
-    EXPECT_NO_THROW(Block(4));
-}
-
-TEST(BlockTests, TestGetters)
-{
-    Block block2 = Block(2);
-    EXPECT_EQ(2, block2.GetValue());
-
-    Block block4 = Block(4);
-    EXPECT_EQ(4, block4.GetValue());
-}
-
-//-- COORDINATE TESTS
-TEST(CoordinateTests, TestValidConstruction)
-{
-    EXPECT_NO_THROW(Coordinate(0, 0));
-    EXPECT_NO_THROW(Coordinate(1, 2));
-    EXPECT_NO_THROW(Coordinate(2, 1));
-    EXPECT_NO_THROW(Coordinate(3, 3));
-}
-
-TEST(CoordinateTests, TestGetters)
-{
-    Coordinate coord00 = Coordinate(0, 0);
-    EXPECT_EQ(0, coord00.GetX());
-    EXPECT_EQ(0, coord00.GetY());
-
-    Coordinate coord12 = Coordinate(1, 2);
-    EXPECT_EQ(1, coord12.GetX());
-    EXPECT_EQ(2, coord12.GetY());
-
-    Coordinate coord21 = Coordinate(2, 1);
-    EXPECT_EQ(2, coord21.GetX());
-    EXPECT_EQ(1, coord21.GetY());
-
-    Coordinate coord33 = Coordinate(3, 3);
-    EXPECT_EQ(3, coord33.GetX());
-    EXPECT_EQ(3, coord33.GetY());
-}
+#include "../header/Coordinate.h"
 
 //-- BOARD TESTS
+
 TEST(BoardTests, TestValidConstruction)
 {
     EXPECT_NO_THROW(Board());
@@ -158,44 +113,4 @@ TEST(BoardTests, TestFullIsBoardFull)
     }
 
     EXPECT_EQ(true, board.IsBoardFull());
-}
-
-//-- BLOCK SPAWNER
-TEST(BlockSpawnerTests, TestNoThrowConstruction)
-{
-    Board* newBoard = new Board();
-    EXPECT_NO_THROW(BlockSpawner blockSpawner(newBoard));
-
-    delete newBoard;
-}
-
-TEST(BlockSpawnerTests, TestNoThrowSpawnBlock)
-{
-    Board* board = new Board();
-    BlockSpawner blockSpawner = BlockSpawner(board);
-
-    EXPECT_NO_THROW(blockSpawner.SpawnBlock());
-
-    delete board;
-}
-
-TEST(BlockSpawnerTests, TestFullBoardSpawnBlock)
-{
-    Board* board = new Board();
-    BlockSpawner blockSpawner = BlockSpawner(board);
-
-    // Spawn 16 blocks to fully populate board
-    for (int i = 0; i < 16; i++)
-    {
-        blockSpawner.SpawnBlock();
-    }
-
-    EXPECT_EQ(true, board->IsBoardFull());
-
-    delete board;
-}
-
-int main(int argc, char** argv) {
-    ::testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
 }
