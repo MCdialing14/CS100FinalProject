@@ -8,7 +8,7 @@ using namespace std;
 
 class Menu : public InputManager {
     private:
-        string menuDisplay = "2048 \n \n Start Game - g \n Settings - s \n Leaderboard - l \n Quit - q";
+        string menuDisplay = "2048 \n \n Start Game - g \n Settings - s \n Leaderboard - l \n Credits - c \n Quit - q";
     public:
         void print();
         void getInput();

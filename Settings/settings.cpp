@@ -55,3 +55,9 @@ int Settings::getSoundLevel() {
 bool Settings::getSoundEffect() {
     return this->soundEffects;
 }
+
+void Settings::changeToDefault() {
+    this->soundEffects = true;
+    this->soundLevel = 5;
+    return;
+}

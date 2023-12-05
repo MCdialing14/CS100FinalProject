@@ -30,6 +30,9 @@ int main() {
         if(userChoice == 's') { //settings loop
             callSettings(tested);
         }
+        if(userChoice == 'l') { //leaderboard
+            cout << "CALL LEADERBOARD FUNCTION HERE" << endl;
+        }
         if(userChoice == 'c') { //credits
             callCredits(testing);
         }
@@ -64,6 +67,23 @@ void callSettings(Settings& tested) {
             cout << "New Volume level (0-10): ";
             tested.changeSoundLevel();
             cout << endl;
+        }
+
+        else if(userChoice == 'e') {
+            cout << "Current sound effects: ";
+            if(tested.getSoundEffect() == false) {
+                cout << "OFF" << endl;
+            }
+            else {
+                cout << "ON" << endl;
+            }
+            cout << "Switch? Yes - 1 No - 0:  ";
+            tested.changeEffects();
+            cout << endl;
+        }
+        else if(userChoice == 'o') {
+            cout << "Settings back to default!" << endl;
+            tested.changeToDefault();
         }
     }
 }
