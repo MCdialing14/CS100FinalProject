@@ -12,7 +12,7 @@ char userChoice;
 string userName;
 int testScore;
 
-const int SIZE = 4;
+const int SIZE = 5;
 string namesArray[SIZE];
 int scoresArray[SIZE];
 int count = 0;
@@ -41,8 +41,10 @@ void callMenu(Menu& test) {
         cin.ignore();
 
         if(userChoice == 'g') {
-            callGame();
-            callGameOver(tester);
+            while(userChoice != 'm') {
+                callGame();
+                callGameOver(tester);
+            }
         }
         if(userChoice == 's') { //settings loop
             callSettings(tested);
@@ -55,6 +57,9 @@ void callMenu(Menu& test) {
         }
         else if(userChoice == 'q') {
             break;
+        }
+        else if(userChoice == 'm') {
+            cout << "Back to Main Menu!" << endl;
         }
         else {
             cout << "Invalid input!" << endl << endl;
@@ -100,6 +105,10 @@ void callCredits(Credits& testing) {
         testing.print();
         cin >> userChoice;
         cin.ignore();
+
+        if(userChoice == 'm') {
+            return;
+        }
     }
 }
 
@@ -124,6 +133,9 @@ void callGameOver(GameOver& tester) {
             addScore(namesArray, scoresArray, count, SIZE, userName, testScore);
             callLeaderboard();
         }
+        else if(userChoice == 'm') {
+            break;
+        }
         else {
             cout << "Invalid input!" << endl << endl;
         }
@@ -147,6 +159,8 @@ void callLeaderboard() {
         if(userChoice == 'c') {
             callCredits(testing);
         }
+        if(userChoice == 'm') {
+            return;
+        }
     }
-    callMenu(test);
 }
