@@ -12,29 +12,56 @@
 /// Returns true if it was able to successfully move/ combine at least one block
 /// Returns false if nothing changed meaning it was an invalid move
 /// </returns>
-bool BlockShifter::ShiftBlocks(Direction direction)
+bool BlockShifter::PerformMove(Direction direction)
 {
-    bool movedOrCombined = false;
+    bool successfulMove = false;
 
     switch (direction)
     {
         case Direction::NORTH:
-            
+            RotateBoard();
+            successfulMove = PerformMoveHelper();
+            RotateBoard();
+            RotateBoard();
+            RotateBoard();
             break;
         case Direction::EAST:
-
+            RotateBoard();
+            RotateBoard();
+            successfulMove = PerformMoveHelper();
+            RotateBoard();
+            RotateBoard();
             break;
         case Direction::SOUTH:
+            RotateBoard();
+            RotateBoard();
+            RotateBoard();
+            successfulMove = PerformMoveHelper();
+            RotateBoard();
             break;
         case Direction::WEST:
+            successfulMove = PerformMoveHelper();
             break;
         default:
             throw std::invalid_argument("Unrecognized Direction enum value");
     }
-    return movedOrCombined;
+    return successfulMove;
 }
 
 //-- HELPERS
+
+/// @brief Performs a shift, merge, then shift in the left direction mimicing the behavior you'd expect in a regular 2048 game.
+/// @returns Whether bool for whether a shift or merge occured
+bool BlockShifter::PerformMoveHelper()
+{
+    bool movedOrCombined = false;
+
+    movedOrCombined = movedOrCombined || ShiftLeft();
+    movedOrCombined = movedOrCombined || MergeLeft();
+    movedOrCombined = movedOrCombined || ShiftLeft();
+
+    return movedOrCombined;
+}
 
 /// @brief Shifts all blocks in all rows to the left. Returns whether a shift occurred as a bool.
 bool BlockShifter::ShiftLeft()
@@ -121,4 +148,32 @@ void BlockShifter::CombineBlocks(Block *intoBlock, Block *matchingBlock)
     
     intoBlock->AddValue(matchingBlock->GetValue());
     delete matchingBlock;
+}
+
+/// @brief Rotates the board 90 degrees counter clock-wise. Used for shifting blocks in directions other than left.
+void BlockShifter::RotateBoard()
+{
+    const int size = board->GetSize();
+    for (int x = 0; x < (size / 2); x++)
+    {
+        for (int y = x; y < (size - x - 1); y++)
+        {
+            Block* temp = board->GetBlock(Coordinate(x, y));
+ 
+            // Move values from right to top
+            Block* right = board->GetBlock(Coordinate(y, size - 1 - x));
+            board->SetBlock(right, Coordinate(x, y));
+ 
+            // Move values from bottom to right
+            Block* bottom = board->GetBlock(Coordinate(size - 1 - x, size - 1 - y));
+            board->SetBlock(bottom, Coordinate(y, size - 1 - x));
+ 
+            // Move values from left to bottom
+            Block* left = board->GetBlock(Coordinate(size - 1 - y, x));
+            board->SetBlock(left, Coordinate(size - 1 - x, size - 1 - y));
+ 
+            // Assign temp to left
+            board->SetBlock(temp, Coordinate(size - 1 - y, x));
+        }
+    }
 }

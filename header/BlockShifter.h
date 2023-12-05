@@ -19,10 +19,12 @@ private:
 
 public: 
     BlockShifter(Board* board) : board(board) {}
-    bool ShiftBlocks(Direction direction);
+    bool PerformMove(Direction direction);
 
 private:
+    bool PerformMoveHelper();
     void CombineBlocks(Block* intoBlock, Block* matchingBlock);
+    void RotateBoard();
     bool ShiftLeft();
     bool IsLeftShiftPossible(int row);
     bool MergeLeft();
