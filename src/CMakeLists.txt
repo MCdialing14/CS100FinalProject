@@ -1,5 +1,5 @@
 
-add_library(simpleLibrary
+add_library(sourceFiles
   BlockSpawner.cpp
   BlockShifter.cpp
   Board.cpp

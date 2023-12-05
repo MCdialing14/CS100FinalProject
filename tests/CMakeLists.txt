@@ -5,13 +5,12 @@ add_subdirectory(googletest)
 
 include_directories(
   ${CMAKE_SOURCE_DIR}/include
-  ${CMAKE_SOURCE_DIR}/src  # Include the src directory for simpleLibrary
+  ${CMAKE_SOURCE_DIR}/src  # Include the src directory for sourceFiles
   ${CMAKE_SOURCE_DIR}/test/src/googletest/include/
   ${CMAKE_SOURCE_DIR}/test/src/googlemock/include/
 )
 
-add_executable(runAllTests
-  test.cpp 
-)
+set(TEST_FILES ./tester.cpp ./blockTests.cpp ./coordinateTests.cpp ./boardTests.cpp ./blockSpawnerTests.cpp ./blockShifterTests.cpp)
+add_executable(test ${TEST_FILES} ${SOURCE_FILES})
 
-target_link_libraries(runAllTests gmock gtest gtest_main simpleLibrary)
+target_link_libraries(test gmock gtest gtest_main sourceFiles)
