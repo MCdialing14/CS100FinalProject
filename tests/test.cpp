@@ -60,33 +60,35 @@ TEST(BoardTests, TestGetRows)
 {
     Board board = Board();
 
-    EXPECT_EQ(4, board.GetRows());
+    EXPECT_EQ(4, board.GetSize());
 }
 
 TEST(BoardTests, TestGetColumns)
 {
     Board board = Board();
 
-    EXPECT_EQ(4, board.GetColumns());
+    EXPECT_EQ(4, board.GetSize());
 }
 
 TEST(BoardTests, TestAddBlock)
 {
     Board board = Board();
     Block* newBlock = new Block(2);
-    EXPECT_NO_THROW(board.AddBlock(newBlock, Coordinate(0, 0)));
-    EXPECT_EQ(newBlock, board.GetBlock(0, 0));
+    Coordinate origin = Coordinate(0, 0);
+    EXPECT_NO_THROW(board.AddBlock(newBlock, origin));
+    EXPECT_EQ(newBlock, board.GetBlock(origin));
 }
 
 TEST(BoardTests, TestConstructionInitialization)
 {
     Board board = Board();
 
-    for (int x = 0; x < board.GetRows(); x++)
+    for (int x = 0; x < board.GetSize(); x++)
     {
-        for (int y = 0; y < board.GetColumns(); y++)
+        for (int y = 0; y < board.GetSize(); y++)
         {
-            EXPECT_EQ(nullptr, board.GetBlock(x, y));
+            Coordinate currentCoord = Coordinate(x, y);
+            EXPECT_EQ(nullptr, board.GetBlock(currentCoord));
         }
     }
 }
@@ -94,12 +96,13 @@ TEST(BoardTests, TestConstructionInitialization)
 TEST(BoardTests, TestGetBlock)
 {
     Board board = Board();
+    Coordinate origin = Coordinate(0, 0);
 
-    EXPECT_EQ(nullptr, board.GetBlock(0, 0));
+    EXPECT_EQ(nullptr, board.GetBlock(origin));
 
     Block* newBlock = new Block(2);
-    board.AddBlock(newBlock, Coordinate(0, 0));
-    EXPECT_EQ(newBlock, board.GetBlock(0, 0));
+    board.AddBlock(newBlock, Coordinate(origin));
+    EXPECT_EQ(newBlock, board.GetBlock(origin));
 }
 
 TEST(BoardTests, TestGetScore)
@@ -146,9 +149,9 @@ TEST(BoardTests, Test1BlockIsBoardFull)
 TEST(BoardTests, TestFullIsBoardFull)
 {
     Board board = Board();
-    for (int x = 0; x < board.GetRows(); x++)
+    for (int x = 0; x < board.GetSize(); x++)
     {
-        for (int y = 0; y < board.GetColumns(); y++)
+        for (int y = 0; y < board.GetSize(); y++)
         {
             board.AddBlock(new Block(2), Coordinate(x, y));
         }

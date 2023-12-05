@@ -12,6 +12,10 @@ public:
 	{
 		return value;
 	}
+	void AddValue(int amount)
+	{
+		value += amount;
+	}
 };
 
 #endif // !BLOCK_H

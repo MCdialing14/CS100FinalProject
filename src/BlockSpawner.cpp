@@ -34,13 +34,15 @@ std::vector<Coordinate> BlockSpawner::GetEmptyCoords()
 {
 	std::vector<Coordinate> emptyCoords;
 
-	for (int x = 0; x < board->GetRows(); x++)
+	for (int x = 0; x < board->GetSize(); x++)
 	{
-		for (int y = 0; y < board->GetColumns(); y++)
+		for (int y = 0; y < board->GetSize(); y++)
 		{
-			if (board->GetBlock(x, y) == nullptr)
+			Coordinate currentCoord = Coordinate(x, y);
+
+			if (board->GetBlock(currentCoord) == nullptr)
 			{
-				emptyCoords.push_back(Coordinate(x, y));
+				emptyCoords.push_back(currentCoord);
 			}
 		}
 	}
