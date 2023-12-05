@@ -6,9 +6,9 @@
 /// </summary>
 Board::Board()
 {
-	for (int x = 0; x < ROWS; x++)
+	for (int x = 0; x < SIZE; x++)
 	{
-		for (int y = 0; y < COLUMNS; y++)
+		for (int y = 0; y < SIZE; y++)
 		{
 			grid[x][y] = nullptr;
 		}
@@ -20,9 +20,9 @@ Board::Board()
 /// </summary>
 Board::~Board()
 {
-	for (int x = 0; x < ROWS; x++)
+	for (int x = 0; x < SIZE; x++)
 	{
-		for (int y = 0; y < COLUMNS; y++)
+		for (int y = 0; y < SIZE; y++)
 		{
 			if (grid[x][y] != nullptr)
 			{
@@ -41,9 +41,9 @@ int Board::GetScore()
 {
 	int sum = 0;
 
-	for (int x = 0; x < ROWS; x++)
+	for (int x = 0; x < SIZE; x++)
 	{
-		for (int y = 0; y < COLUMNS; y++)
+		for (int y = 0; y < SIZE; y++)
 		{
 			if (grid[x][y] != nullptr)
 			{
@@ -55,27 +55,15 @@ int Board::GetScore()
 	return sum;
 }
 
-/// <summary>
-/// returns number of rows of the board
-/// </summary>
-/// <returns></returns>
-const int Board::GetRows()
+/// @brief returns the size of the board
+const int Board::GetSize()
 {
-	return ROWS;
+	return SIZE;
 }
 
-/// <summary>
-/// returns number of columns of the board
-/// </summary>
-/// <returns></returns>
-const int Board::GetColumns()
+Block* Board::GetBlock(Coordinate coord)
 {
-	return COLUMNS;
-}
-
-Block* Board::GetBlock(int x, int y)
-{
-	return grid[x][y];
+	return grid[coord.GetX()][coord.GetY()];
 }
 
 /// <summary>
@@ -95,7 +83,7 @@ void Board::AddBlock(Block* block, Coordinate coord)
 	}
 	else
 	{
-		throw std::invalid_argument("The specified coordinate is already occupied.");
+		throw std::invalid_argument("The specified coordinate (" + std::to_string(coord.GetX()) + ", " + std::to_string(coord.GetY()) + ") is already occupied.");
 	}
 }
 
@@ -109,9 +97,9 @@ void Board::AddBlock(Block* block, Coordinate coord)
 bool Board::IsBoardFull()
 {
 	// Return false if it finds an empty space
-	for (int x = 0; x < ROWS; x++)
+	for (int x = 0; x < SIZE; x++)
 	{
-		for (int y = 0; y < COLUMNS; y++)
+		for (int y = 0; y < SIZE; y++)
 		{
 			if (grid[x][y] == nullptr)
 			{
@@ -122,4 +110,10 @@ bool Board::IsBoardFull()
 
 	// Otherwise return true
 	return true;
+}
+
+/// @brief Sets the block at the specified coordinate to the pointer provided
+void Board::SetBlock(Block *block, Coordinate coordinate)
+{
+	grid[coordinate.GetX()][coordinate.GetY()] = block;
 }

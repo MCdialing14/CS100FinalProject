@@ -7,17 +7,16 @@
 class Board
 {
 private:
-	static constexpr int ROWS = 4;
-	static constexpr int COLUMNS = 4;
-	Block* grid[ROWS][COLUMNS] = {};
+	static constexpr int SIZE = 4;
+	Block* grid[SIZE][SIZE] = {};
 public:
 	Board();
 	~Board();
 	int GetScore();
-	const int GetRows();
-	const int GetColumns();
-	Block* GetBlock(int x, int y);
+	const int GetSize();
+	Block* GetBlock(Coordinate);
 	void AddBlock(Block*, Coordinate);
+	void SetBlock(Block*, Coordinate);
 	bool IsBoardFull();
 };
 
