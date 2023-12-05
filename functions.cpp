@@ -1,7 +1,7 @@
 #include "functions.h"
 
 void displayScores(std::string namesArray[], int scoresArray[], int count){
-    std::cout << std::endl << "Leader Board" << std::endl;
+    std::cout << std::endl << std::endl << std::endl << std::endl << std::endl << std::endl << std::endl << std::endl << std::endl << "LEADERBOARD" << std::endl;
     int ranking = 0;
     for (int i = count -1; i >=0; i--){
         ++ranking;

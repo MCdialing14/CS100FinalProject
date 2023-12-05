@@ -113,7 +113,15 @@ void callCredits(Credits& testing) {
 }
 
 void callGame() {
-    cout << "In game, enter score to test game over/leaderboard" << endl;
+    cout << "\n \n \n \n \n \n \n \n \nIN GAME, enter score to test game over/leaderboard" << endl;
+    cout << "Main Menu - m" << endl;
+    cout << "Enter trash char to continue, 'm' to main menu: ";
+    cin >> userChoice;
+    cin.ignore();
+    if(userChoice == 'm') {
+        return;
+    }
+    cout << "Enter test score: ";
     cin >> testScore;
     cin.ignore();
 }

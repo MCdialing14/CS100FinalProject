@@ -11,7 +11,6 @@ char Settings::returnInput() {
 
 void Settings::print() {
     cout << settingsDisplay << endl;
-    //getInput();
 }
 
 string Settings::getSettingsDisplay() { // for testing
