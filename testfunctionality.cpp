@@ -17,40 +17,40 @@ string namesArray[SIZE];
 int scoresArray[SIZE];
 int count = 0;
 
-Menu test;
-Settings tested;
-Credits testing; 
-GameOver tester;
+Menu gameMenu;
+Settings gameSettings;
+Credits gameCredits; 
+GameOver gameEnd;
 
 void callMenu(Menu& gameMenu);
 void callSettings(Settings& gameSettings);
-void callCredits(Credits& gameCreds);
+void callCredits(Credits& gameCredits);
 void callGame();
 void callGameOver(GameOver& gameEnd);
 void callLeaderboard();
 
 int main() {   
-    callMenu(test);
+    callMenu(gameMenu);
     return 0;
 }
 
-void callMenu(Menu& test) {
+void callMenu(Menu& gameMenu) {
     do {
-        test.print();
+        gameMenu.print();
         cin >> userChoice;
         cin.ignore();
 
         if(userChoice == 'g') {
             while(userChoice != 'm') {
                 callGame();
-                callGameOver(tester);
+                callGameOver(gameEnd);
             }
         }
         if(userChoice == 's') { //settings loop
-            callSettings(tested);
+            callSettings(gameSettings);
         }
         else if(userChoice == 'c') { //credits
-            callCredits(testing);
+            callCredits(gameCredits);
         }
         else if(userChoice == 'l') { //leaderboard
             callLeaderboard();
@@ -67,42 +67,42 @@ void callMenu(Menu& test) {
     } while(userChoice != 'q');
 }
 
-void callSettings(Settings& tested) {
+void callSettings(Settings& gameSettings) {
 
     while(userChoice != 'm') {
-        tested.print();
+        gameSettings.print();
         cin >> userChoice;
         cin.ignore();
 
         if(userChoice == 'v') {
-            cout << "Current Volume level: " << tested.getSoundLevel() << endl;
+            cout << "Current Volume level: " << gameSettings.getSoundLevel() << endl;
             cout << "New Volume level (0-10): ";
-            tested.changeSoundLevel();
+            gameSettings.changeSoundLevel();
             cout << endl;
         }
 
         else if(userChoice == 'e') {
             cout << "Current sound effects: ";
-            if(tested.getSoundEffect() == false) {
+            if(gameSettings.getSoundEffect() == false) {
                 cout << "OFF" << endl;
             }
             else {
                 cout << "ON" << endl;
             }
             cout << "Switch? Yes - 1 No - 0:  ";
-            tested.changeEffects();
+            gameSettings.changeEffects();
             cout << endl;
         }
         else if(userChoice == 'o') {
             cout << "Settings back to default!" << endl;
-            tested.changeToDefault();
+            gameSettings.changeToDefault();
         }
     }
 }
 
-void callCredits(Credits& testing) {
+void callCredits(Credits& gameCredits) {
     while(userChoice != 'm') {
-        testing.print();
+        gameCredits.print();
         cin >> userChoice;
         cin.ignore();
 
@@ -126,9 +126,9 @@ void callGame() {
     cin.ignore();
 }
 
-void callGameOver(GameOver& tester) {
+void callGameOver(GameOver& gameEnd) {
     while(userChoice != 'm') {
-        tester.print();
+        gameEnd.print();
         cin >> userChoice;
         cin.ignore();
 
@@ -165,7 +165,7 @@ void callLeaderboard() {
         cin.ignore();
 
         if(userChoice == 'c') {
-            callCredits(testing);
+            callCredits(gameCredits);
         }
         if(userChoice == 'm') {
             return;
