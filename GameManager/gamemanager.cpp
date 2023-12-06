@@ -26,7 +26,7 @@ bool GameManager::isGameLost() { // returns true if the player lost, otherwise r
     for (int x = 1; x < board.GetSize(); ++x) { // loop to find 2 mergable blocks
         for (int y = 0; y < board.GetSize(); ++y) {
             currentBlock = board.GetBlock(Coordinate(x, y));
-            if (!(currentBlock == nullptr)) { // go through the different cases of checking blocks
+            if (currentBlock != nullptr) { // a null space can not be merged
                 if (prevoiusBlock->GetValue() == currentBlock->GetValue()) {
                     mergePossible = true;
                 }
@@ -35,20 +35,53 @@ bool GameManager::isGameLost() { // returns true if the player lost, otherwise r
         }
     }
 
+    prevoiusBlock = board.GetBlock(Coordinate(x, 0));
+    currentBlock = nullptr;
     // loop to find possible vertical merges
-
+    for (int y = 1; y < board.GetSize(); ++y) { // loop to find 2 mergable blocks
+        for (int x = 0; x < board.GetSize(); ++x) {
+            currentBlock = board.GetBlock(Coordinate(x, y));
+            if (currentBlock != nullptr) { // a null space can not be merged
+                if (prevoiusBlock->GetValue() == currentBlock->GetValue()) {
+                    mergePossible = true;
+                }
+            }
+            currentBlock = prevoiusBlock;
+        }
+    }
 
     return boardFull && !mergePossible;
+}
+
+Direction GameManager::getInput() { // gets inpupt from the user to determine the direction of the shift
+    char userInput = ' ';
+    cin >> userInput;
+    if (userInput == 'w') {
+        return NORTH;
+    }
+    if (userInput == 'a') {
+        return WEST;
+    }
+    if (userInput == 's') {
+        return SOUTH;
+    }
+    if (userInput == 'd') {
+        return EAST;
+    }
+}
+
+void GameManager::handleLose() {
+    cout << "Final score: " << board.GetScore() << endl;
 }
 
 void GameManager::performGameLoop() {
     blockSpawner.SpawnBlock();
     updateGameDisplay();
     
-    while (!isGameLost()) {
+    while (!isGameLost()) { // when this loop ends, the player has lost
         bool movePerformed = false;
         while (!movePerformed) {
-            movePerformed = blockShifter.ShiftBlocks(getInput());
+            movePerformed = blockShifter.PerformMove(getInput()); // changed from .ShiftBlocks
         }
 
         blockSpawner.SpawnBlock();

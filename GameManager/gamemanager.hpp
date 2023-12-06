@@ -15,7 +15,7 @@ class GameManager {
         BlockSpawner blockSpawner;
 
     public:
-        BlockShifter::Direction getInput();
+        Direction getInput();
         void performGameLoop();
         bool isGameLost();
         void handleLose(); // prints final score and gives options to navigate menus
