@@ -1,4 +1,4 @@
-#include "functions.h"
+#include "../header/functions.h"
 
 void displayScores(std::string namesArray[], int scoresArray[], int count){
     std::cout << "Leader Board" << std::endl;
@@ -9,7 +9,7 @@ void displayScores(std::string namesArray[], int scoresArray[], int count){
 }
 void sort(std::string namesArray[], int scoresArray[], int count){
     //increment over unsorted items 
-    for (int i = 1; < count; i++) {
+    for (int i = 1; i < count; i++) {
         //value to be inserted into the sorted array
         std::string name = namesArray[i];
         int score = scoresArray[i];
@@ -21,7 +21,7 @@ void sort(std::string namesArray[], int scoresArray[], int count){
         while 
             (j >= 0 && scoresArray[j] > score) {
             scoresArray[j+1] = scoresArray [j];
-            namesArray[j+1] = namesArray[j]
+            namesArray[j+1] = namesArray[j];
             j--;
         }
     }
@@ -42,19 +42,19 @@ void addScore(std::string namesArray[], int scoresArray[], int &count, int size,
             //Put in the only score
             scoresArray[0] = score;
             namesArray[0] = name;
-            count++
+            count++;
         }
         else {
             //Replace low score if the loader board is filled
             if (count == size){
                 if (score > scoresArray [0]) {
-                    scoresArray[0] = score
+                    scoresArray[0] = score;
                 }
             }
             else {
                 scoresArray [count] = score;
                 namesArray [count] = name;
-                count++''
+                count++;
             }
 
            //sort the Array  
