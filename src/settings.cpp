@@ -1,4 +1,4 @@
-#include "settings.hpp"
+#include "../header/settings.hpp"
 
 void Settings::getInput() {
     cin >> userInputChar;

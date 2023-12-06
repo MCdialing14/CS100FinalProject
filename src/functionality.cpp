@@ -1,7 +1,8 @@
-#include "MainMenu/menu.hpp"
-#include "Settings/settings.hpp"
-#include "Credits/credits.hpp"
-#include "GameOver/gameover.hpp"
+#include "../header/menu.hpp"
+#include "../header/settings.hpp"
+#include "../header/credits.hpp"
+#include "../header/gameover.hpp"
+#include "../header/gamemanager.hpp"
 #include <iostream>
 #include <string>
 
@@ -12,12 +13,12 @@ char userChoice;
 void callSettings(Settings& gameSettings);
 void callCredits(Credits& gameCreds);
 void callGameOver(GameOver& gameOverObject);
+void startNewGame();
 
 int main() {
     Menu test;
     Settings tested;
     Credits testing;
-    GameOver gameOverObject;
 
     do {
         test.print();
@@ -25,7 +26,7 @@ int main() {
         cin.ignore();
 
         if(userChoice == 'g') { //game loop
-            callGameOver(gameOverObject);
+            startNewGame();
         }
         if(userChoice == 's') { //settings loop
             callSettings(tested);
@@ -41,6 +42,13 @@ int main() {
     return 0;
 }
 
+void startNewGame() {
+    GameManager gameManager;
+    gameManager.performGameLoop();
+    GameOver gameOverObject;
+    callGameOver(gameOverObject);
+}
+
 void callGameOver(GameOver& gameOverObject) {
     while (userChoice != 'm') {
         gameOverObject.print();
@@ -48,7 +56,7 @@ void callGameOver(GameOver& gameOverObject) {
         cin.ignore();
 
         if (userChoice == 'g') { // fix later
-            cout << "START NEW GAME HERE!" << endl;
+            startNewGame();
         }
         if (userChoice == 'l') { // fix later
             cout << "PRINT LEADERBOARD HERE!" << endl;

@@ -1,4 +1,4 @@
-#include "credits.hpp"
+#include "../header/credits.hpp"
 
 void Credits::print() {
     cout << creditDisplay << endl;

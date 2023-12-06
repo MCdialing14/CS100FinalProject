@@ -1,4 +1,4 @@
-#include "menu.hpp"
+#include "../header/menu.hpp"
 
 void Menu::print() {
     cout << menuDisplay << endl;
