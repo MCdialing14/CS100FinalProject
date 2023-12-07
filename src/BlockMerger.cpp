@@ -11,10 +11,10 @@ bool BlockMerger::MergeLeft()
 
     for (int y = 0; y < board->GetSize(); y++)
     {
-        Block* previousBlock = board->GetBlock(Coordinate(0, y));
         for (int x = 1; x < board->GetSize(); x++)
         {
             Coordinate currentCoord = Coordinate(x, y);
+            Block* previousBlock = board->GetBlock(Coordinate(x - 1, y));
             Block* currentBlock = board->GetBlock(currentCoord);
             if (previousBlock != nullptr && currentBlock != nullptr)
             {
