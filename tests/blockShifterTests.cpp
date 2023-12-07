@@ -16,35 +16,92 @@ TEST(BlockShifterTests, ShiftLeftGap)
     Board board = Board();
     BlockShifter blockShifter = BlockShifter(&board);
 
-    /*
-    BEFORE:
+    for (int y = 0; y < board.GetSize(); y++)
+    {           
+        Block* originBlock = new Block(2);
+        board.AddBlock(originBlock, Coordinate(0, y));
 
-    x x x x
-    x x x x
-    x x x x
-    2 x x 2
-    */
+        Block* endBlock = new Block(2);
+        board.AddBlock(endBlock, Coordinate(3, y));
 
-    Block* originBlock = new Block(2);
-    board.AddBlock(originBlock, Coordinate(0, 0));
+        // BEFORE SHIFT: 2 x x 2
+        ASSERT_TRUE(blockShifter.ShiftLeft());
+        // AFTER SHIFT (hopefully): 2 2 x x
 
-    Block* endBlock = new Block(2);
-    board.AddBlock(endBlock, Coordinate(3, 0));
+        // make sure the values on that row are 2, 2, x, x
+        EXPECT_EQ(originBlock, board.GetBlock(Coordinate(0, y)));
+        EXPECT_EQ(endBlock, board.GetBlock(Coordinate(1, y)));
+        EXPECT_EQ(nullptr, board.GetBlock(Coordinate(2, y)));
+        EXPECT_EQ(nullptr, board.GetBlock(Coordinate(3, y)));
+    }
+}
 
-    /* 
-    AFTER SHIFT (hopefully):
+TEST(BlockShifterTests, ShiftLeftNotPossible)
+{
+    Board board = Board();
+    BlockShifter blockShifter = BlockShifter(&board);
 
-    x x x x
-    x x x x
-    x x x x
-    2 2 x x
-    */
+    for (int y = 0; y < board.GetSize(); y++)
+    {
+        // make sure no shift happens and values on row are 2, x, x, x
+        Block* originBlock = new Block(2);
+        board.AddBlock(originBlock, Coordinate(0, y));
+        ASSERT_FALSE(blockShifter.ShiftLeft());
+        EXPECT_EQ(originBlock, board.GetBlock(Coordinate(0, y)));
+        EXPECT_EQ(nullptr, board.GetBlock(Coordinate(1, y)));
+        EXPECT_EQ(nullptr, board.GetBlock(Coordinate(2, y)));
+        EXPECT_EQ(nullptr, board.GetBlock(Coordinate(3, y)));
 
-    ASSERT_TRUE(blockShifter.ShiftLeft());
+        // make sure no shift happens and the values on that row are 2, 2, x, x
+        Block* secondBlock = new Block(2);
+        board.AddBlock(secondBlock, Coordinate(1, y));
+        ASSERT_FALSE(blockShifter.ShiftLeft());
+        EXPECT_EQ(originBlock, board.GetBlock(Coordinate(0, y)));
+        EXPECT_EQ(secondBlock, board.GetBlock(Coordinate(1, y)));
+        EXPECT_EQ(nullptr, board.GetBlock(Coordinate(2, y)));
+        EXPECT_EQ(nullptr, board.GetBlock(Coordinate(3, y)));
 
-    // make sure the values on that row are 2, 2, x, x
-    EXPECT_EQ(originBlock, board.GetBlock(Coordinate(0, 0)));
-    EXPECT_EQ(endBlock, board.GetBlock(Coordinate(1, 0)));
-    EXPECT_EQ(nullptr, board.GetBlock(Coordinate(2, 0)));
-    EXPECT_EQ(nullptr, board.GetBlock(Coordinate(3, 0)));
+        // make sure no shift happens and values on row are 2, 2, 2, x
+        Block* thirdBlock = new Block(2);
+        board.AddBlock(thirdBlock, Coordinate(2, y));
+        ASSERT_FALSE(blockShifter.ShiftLeft());
+        EXPECT_EQ(originBlock, board.GetBlock(Coordinate(0, y)));
+        EXPECT_EQ(secondBlock, board.GetBlock(Coordinate(1, y)));
+        EXPECT_EQ(thirdBlock, board.GetBlock(Coordinate(2, y)));
+        EXPECT_EQ(nullptr, board.GetBlock(Coordinate(3, y)));
+
+        // make sure no shift happens and values on row are 2, 2, 2, 2
+        Block* endBlock = new Block(2);
+        board.AddBlock(endBlock, Coordinate(3, y));
+        ASSERT_FALSE(blockShifter.ShiftLeft());
+        EXPECT_EQ(originBlock, board.GetBlock(Coordinate(0, y)));
+        EXPECT_EQ(secondBlock, board.GetBlock(Coordinate(1, y)));
+        EXPECT_EQ(thirdBlock, board.GetBlock(Coordinate(2, y)));
+        EXPECT_EQ(endBlock, board.GetBlock(Coordinate(3, y)));
+    }
+}
+
+TEST(BlockShifterTests, ShiftFromMiddle)
+{
+    Board board = Board();
+    BlockShifter blockShifter = BlockShifter(&board);
+
+    for (int y = 0; y < board.GetSize(); y++)
+    {           
+        Block* originBlock = new Block(2);
+        board.AddBlock(originBlock, Coordinate(0, y));
+
+        Block* endBlock = new Block(2);
+        board.AddBlock(endBlock, Coordinate(3, y));
+
+        // BEFORE SHIFT: 2 x x 2
+        ASSERT_TRUE(blockShifter.ShiftLeft());
+        // AFTER SHIFT (hopefully): 2 2 x x
+
+        // make sure the values on that row are 2, 2, x, x
+        EXPECT_EQ(originBlock, board.GetBlock(Coordinate(0, y)));
+        EXPECT_EQ(endBlock, board.GetBlock(Coordinate(1, y)));
+        EXPECT_EQ(nullptr, board.GetBlock(Coordinate(2, y)));
+        EXPECT_EQ(nullptr, board.GetBlock(Coordinate(3, y)));
+    }
 }

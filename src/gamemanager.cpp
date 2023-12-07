@@ -14,13 +14,17 @@ GameManager::~GameManager() {
 
 void GameManager::updateGameDisplay() {
     Block *blockPointer;
-    for (int row = 0; row < 4; ++row) { 
-        for (int column = 0; column < 4; ++column) {
-            blockPointer = board->GetBlock(Coordinate(row, column));
-            if (blockPointer == nullptr) {
+    for (int y = board->GetSize() - 1; y >= 0; --y) 
+    { 
+        for (int x = 0; x < 4; ++x) 
+        {
+            blockPointer = board->GetBlock(Coordinate(x, y));
+            if (blockPointer == nullptr) 
+            {
                 cout << "x ";
             }
-            else {
+            else
+            {
                 cout << blockPointer->GetValue() << " ";
             }
         }
