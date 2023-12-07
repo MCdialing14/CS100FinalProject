@@ -2,7 +2,6 @@
 
 void GameOver::print() {
     cout << overDisplay << endl;
-    // getInput();
 }
 
 void GameOver::getInput() {

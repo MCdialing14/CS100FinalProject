@@ -11,7 +11,6 @@ char Settings::returnInput() {
 
 void Settings::print() {
     cout << settingsDisplay << endl;
-    //getInput();
 }
 
 string Settings::getSettingsDisplay() { // for testing
@@ -39,9 +38,9 @@ void Settings::changeEffects() {
     cin >> userInputInt;
 
     if(userInputInt == 1) {
-        this->soundEffects = !(soundEffects);
+        this->soundEffects = !(getSoundEffect());
     }
-    else if (userInputInt == 0) {
+    else {
         return;
     }
     return;

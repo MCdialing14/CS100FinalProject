@@ -1,15 +1,17 @@
 #include "../header/functions.h"
 
 void displayScores(std::string namesArray[], int scoresArray[], int count){
-    std::cout << "Leader Board" << std::endl;
+    std::cout << std::endl << std::endl << std::endl << std::endl << std::endl << std::endl << std::endl << std::endl << std::endl << "LEADERBOARD" << std::endl;
+    int ranking = 0;
     for (int i = count -1; i >=0; i--){
-        std::cout << namesArray[i] << " " << scoresArray[i] << std::endl;
+        ++ranking;
+        std::cout << ranking << ". " << namesArray[i] << " " << scoresArray[i] << std::endl;
     }
 
 }
 void sort(std::string namesArray[], int scoresArray[], int count){
     //increment over unsorted items 
-    for (int i = 1; i < count; i++) {
+    for (int i = 0; i < count; i++) {
         //value to be inserted into the sorted array
         std::string name = namesArray[i];
         int score = scoresArray[i];
@@ -24,6 +26,9 @@ void sort(std::string namesArray[], int scoresArray[], int count){
             namesArray[j+1] = namesArray[j];
             j--;
         }
+
+        scoresArray[j+1] = score;
+        namesArray [j+1] = name;
     }
 
 }
@@ -49,6 +54,7 @@ void addScore(std::string namesArray[], int scoresArray[], int &count, int size,
             if (count == size){
                 if (score > scoresArray [0]) {
                     scoresArray[0] = score;
+                    namesArray[0] = name;
                 }
             }
             else {
@@ -71,4 +77,13 @@ int findName(std::string namesArray[], int count, std::string name){
         if (name.compare(namesArray[i])==0)index =i;
     }
     return index;
+}
+
+bool is_Empty(std::string namesArray[]) {
+    if(namesArray->empty()) {
+        return true;
+    }
+    else {
+        return false;
+    }
 }

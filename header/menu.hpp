@@ -2,18 +2,15 @@
 #define MENU_HPP
 #include <string>
 #include <iostream>
-#include "../inputmanager.hpp"
+#include "../header/inputmanager.hpp"
 
 using namespace std;
 
-class Menu : public InputManager {
+class Menu {
     private:
-        string menuDisplay = "2048 \n \n Start Game - g \n Settings - s \n Leaderboard - l \n Credits - c \n Quit - q";
+        string menuDisplay = "\n \n \n \n \n \n \n \n \n2048 \n \n Start Game - g \n Settings - s \n Leaderboard - l \n Credits - c \n Quit - q";
     public:
         void print();
-        void getInput();
-        char returnInput();
-        void clearInput();
         string getMenuDisplay(); // for testing
 };
 
