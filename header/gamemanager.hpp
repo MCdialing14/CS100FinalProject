@@ -22,6 +22,7 @@ class GameManager {
         bool isGameLost();
         void handleLose(); // prints final score and gives options to navigate menus
         void updateGameDisplay();
+        int returnGameScore();
 };
 
 #endif

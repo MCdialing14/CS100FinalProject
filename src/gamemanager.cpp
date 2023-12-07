@@ -115,3 +115,7 @@ void GameManager::performGameLoop() {
 
     handleLose();
 }
+
+int GameManager::returnGameScore() {
+    return board->GetScore();
+}
