@@ -10,7 +10,7 @@ include_directories(
   ${CMAKE_SOURCE_DIR}/test/src/googlemock/include/
 )
 
-set(TEST_FILES ./tester.cpp ./blockTests.cpp ./coordinateTests.cpp ./boardTests.cpp ./blockSpawnerTests.cpp ./blockShifterTests.cpp)
+set(TEST_FILES ./tester.cpp ./blockTests.cpp ./coordinateTests.cpp ./boardTests.cpp ./blockSpawnerTests.cpp ./blockShifterTests.cpp ./mainMenuTests.cpp)
 add_executable(test ${TEST_FILES} ${SOURCE_FILES})
 
 target_link_libraries(test gmock gtest gtest_main sourceFiles)
