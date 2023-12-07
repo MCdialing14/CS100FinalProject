@@ -38,8 +38,7 @@ bool GameManager::isGameLost() { // returns true if the player lost, otherwise r
         Block* previousBlock = board->GetBlock(Coordinate(0, y));
         for (int x = 1; x < board->GetSize(); x++)
         {
-            Coordinate currentCoord = Coordinate(x, y);
-            Block* currentBlock = board->GetBlock(currentCoord);
+            Block* currentBlock = board->GetBlock(Coordinate(x, y));
             if (previousBlock != nullptr && currentBlock != nullptr)
             {
                 if (previousBlock->GetValue() == currentBlock->GetValue())
@@ -102,7 +101,7 @@ void GameManager::performGameLoop() {
     while (!isGameLost()) { // when this loop ends, the player has lost
         bool movePerformed = false;
         while (!movePerformed) {
-            movePerformed = blockMover->PerformMove(getInput()); // changed from .ShiftBlocks
+            movePerformed = blockMover->PerformMove(getInput());
         }
 
         blockSpawner->SpawnBlock();
