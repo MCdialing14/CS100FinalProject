@@ -89,7 +89,7 @@ TEST(BoardTests, TestEmptyIsBoardFull)
 {
     Board board = Board();
 
-    EXPECT_EQ(false, board.IsBoardFull());
+    EXPECT_FALSE(board.IsBoardFull());
 }
 
 TEST(BoardTests, Test1BlockIsBoardFull)
@@ -98,7 +98,7 @@ TEST(BoardTests, Test1BlockIsBoardFull)
 
     Block* newBlock = new Block(2);
     board.AddBlock(newBlock, Coordinate(0, 0));
-    EXPECT_EQ(false, board.IsBoardFull());
+    EXPECT_FALSE(board.IsBoardFull());
 }
 
 TEST(BoardTests, TestFullIsBoardFull)
@@ -112,5 +112,5 @@ TEST(BoardTests, TestFullIsBoardFull)
         }
     }
 
-    EXPECT_EQ(true, board.IsBoardFull());
+    EXPECT_TRUE(board.IsBoardFull());
 }
