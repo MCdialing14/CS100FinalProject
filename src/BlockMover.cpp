@@ -58,44 +58,42 @@ bool BlockMover::PerformMove(Direction direction)
 }
 
 /// @brief Rotates the board 90 degrees counter clock-wise. Used for shifting blocks in directions other than left.
-void BlockMover::RotateBoard()
-{
-    const int size = board->GetSize();
-    for (int x = 0; x < (size / 2); x++)
-    {
-        for (int y = x; y < (size - x - 1); y++)
-        {
-            Block* temp = board->GetBlock(Coordinate(x, y));
- 
-            // Move values from right to top
-            Block* right = board->GetBlock(Coordinate(y, size - 1 - x));
-            board->SetBlock(right, Coordinate(x, y));
- 
-            // Move values from bottom to right
-            Block* bottom = board->GetBlock(Coordinate(size - 1 - x, size - 1 - y));
-            board->SetBlock(bottom, Coordinate(y, size - 1 - x));
- 
-            // Move values from left to bottom
-            Block* left = board->GetBlock(Coordinate(size - 1 - y, x));
-            board->SetBlock(left, Coordinate(size - 1 - x, size - 1 - y));
- 
-            // Assign temp to left
-            board->SetBlock(temp, Coordinate(size - 1 - y, x));
-        }
-    }
-}
+void BlockMover::RotateBoard() {
+  const int size = board->GetSize();
+  for (int x = 0; x < (size / 2); x++) {
+    for (int y = x; y < (size - x - 1); y++) {
+      // Create temporary variable to store current block
+      Block* tempBlock = board->GetBlock(Coordinate(x, y));
 
+      // Move values from right to top
+      Block* rightBlock = board->GetBlock(Coordinate(y, size - 1 - x));
+      board->SetBlock(rightBlock, Coordinate(x, y));
+      if (rightBlock != nullptr) delete rightBlock;
+
+      // Move values from bottom to right
+      Block* bottomBlock = board->GetBlock(Coordinate(size - 1 - x, size - 1 - y));
+      board->SetBlock(bottomBlock, Coordinate(y, size - 1 - x));
+      if (bottomBlock != nullptr) delete bottomBlock;
+
+      // Move values from left to bottom
+      Block* leftBlock = board->GetBlock(Coordinate(size - 1 - y, x));
+      board->SetBlock(leftBlock, Coordinate(size - 1 - x, size - 1 - y));
+      if (leftBlock != nullptr) delete bottomBlock;
+
+      // Assign tempBlock to left
+      board->SetBlock(tempBlock, Coordinate(size - 1 - y, x));
+    }
+  }
+}
 //-- HELPERS
 
 /// @brief Performs a shift, merge, then shift in the left direction mimicing the behavior you'd expect in a regular 2048 game.
 /// @returns Whether bool for whether a shift or merge occured
-bool BlockMover::PerformMoveHelper()
-{
-    bool movedOrCombined = false;
+bool BlockMover::PerformMoveHelper() {
+  bool movedOrCombined = false;
 
-    movedOrCombined = movedOrCombined || blockShifter->ShiftLeft();
-    movedOrCombined = movedOrCombined || blockMerger->MergeLeft();
-    movedOrCombined = movedOrCombined || blockShifter->ShiftLeft();
+  movedOrCombined = movedOrCombined || blockShifter->ShiftLeft();
+  movedOrCombined = movedOrCombined || blockMerger->MergeLeft();
 
-    return movedOrCombined;
+  return movedOrCombined;
 }

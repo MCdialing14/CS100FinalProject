@@ -9,15 +9,13 @@ bool BlockMerger::MergeLeft()
 {
     bool mergeOccured = false;
 
-    for (int y = 0; y < board->GetSize(); y++)
-    {
-        Block* previousBlock = board->GetBlock(Coordinate(0, y));
-        for (int x = 1; x < board->GetSize(); x++)
+    for (int y = 0; y < board->GetSize(); y++) {
+    Block* previousBlock = board->GetBlock(Coordinate(0, y));
+    for (int x = 1; board->GetBlock(Coordinate(x, y)) != nullptr; x++)
         {
             Coordinate currentCoord = Coordinate(x, y);
             Block* currentBlock = board->GetBlock(currentCoord);
-            if (previousBlock != nullptr && currentBlock != nullptr)
-            {
+            if (previousBlock != nullptr && currentBlock != nullptr) {
                 if (previousBlock->GetValue() == currentBlock->GetValue())
                 {
                     CombineBlocks(previousBlock, currentBlock);
@@ -37,9 +35,10 @@ void BlockMerger::CombineBlocks(Block *intoBlock, Block *matchingBlock)
 {
     if (intoBlock->GetValue() != matchingBlock->GetValue())
     {
-        throw std::runtime_error("Cannot combine blocks whose values do not match.");
+        throw std::runtime_error("Cannot combine blocks with values " + std::to_string(intoBlock->GetValue()) + " and " + std::to_string(matchingBlock->GetValue()) + ".");
     }
     
     intoBlock->AddValue(matchingBlock->GetValue());
     delete matchingBlock;
+    matchingBlock = nullptr;
 }
