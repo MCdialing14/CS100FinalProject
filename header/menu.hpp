@@ -2,7 +2,6 @@
 #define MENU_HPP
 #include <string>
 #include <iostream>
-#include "../header/inputmanager.hpp"
 
 using namespace std;
 

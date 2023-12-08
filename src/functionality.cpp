@@ -122,6 +122,7 @@ void callGame() {
 
 void callGameOver(GameOver& gameEnd) {
     while(userChoice != 'm') {
+        
         gameEnd.print();
         cin >> userChoice;
         cin.ignore();

@@ -33,7 +33,7 @@ A 2048 C++ game is interesting to us because we all have an interest of making g
 
 ## Class Diagram
 <p align="center">
-  <img src="/Diagrams/UMLUpdated.PNG?raw=true" alt="Class Diagram" height="700">
+  <img src="/Diagrams/FinalUMLDiagram.png?raw=true" alt="Class Diagram" height="700">
 </p>
 <p align="center">Class Diagram</p>
 <p>This diagram lays out the way we want classes to control the logic of our game and menus. The abstract InputManager is what all menus derive from. Each menu should provide how they want to handle input as described in the screen layouts. The leaderboard is the most complicated menu though. It displays an array of Entry[] which are a simple pair of names and their highscore that get stored across sessions. For the gameplay related classes, there is the overhead game manager that controls the gameplay loop until the player loses (there is no winning in a game like 2048). The loop is essentially to spawn a block, check if the player lost (no possible moves to make), handle input, and use its child objects to shift the blocks. It creates the board and gives a reference of it to its child helper objects like block shifter or block spawener. Block spawner handles the logic to put new blocks on the board, while block shifter moves them in the direction of input (if such a move is possible which is why the shiftBlocks function returns a bool so we can recognize invalid moves and not progress the loop when necessary). The class coordinate is mostly used for the spawning of blocks. The spawner can analyze the board and find coordinates in the board that don't have a block. Then it will create a block with a random value of 2 or 4 and place it at one of those empty coordinates. And the block of course is the base of most of this functionality. Many classes work with it as described previously.</p>
@@ -51,22 +51,14 @@ Changes here once again mostly related to building its sense of the single respo
 **Input Manager**
 The change here is the inclusion of another public function that can return the value of the protected variables of user input. This is a part of the single responsibility and open-closed principles in relation to SOLID. In order to compare the user input to a specific letter for menu navigation, we need to access the protected variables in the Input Manager class. In doing so we modify the class to perform another action related to input managing without removing another functionality. 
 
- 
- > ## Final deliverable
- > All group members will give a demo to the reader during lab time. ou should schedule your demo on Calendly with the same reader who took your second scrum meeting. The reader will check the demo and the project GitHub repository and ask a few questions to all the team members. 
- > Before the demo, you should do the following:
- > * Complete the sections below (i.e. Screenshots, Installation/Usage, Testing)
- > * Plan one more sprint (that you will not necessarily complete before the end of the quarter). Your In-progress and In-testing columns should be empty (you are not doing more work currently) but your TODO column should have a full sprint plan in it as you have done before. This should include any known bugs (there should be some) or new features you would like to add. These should appear as issues/cards on your Project board.
- > * Make sure your README file and Project board are up-to-date reflecting the current status of your project (e.g. any changes that you have made during the project such as changes to your class diagram). Previous versions should still be visible through your commit history. 
- 
  ## Screenshots
  <img src="/Diagrams/InputOutputScreens/StartingScreen.PNG?raw=true" alt="Start Screen" height="350">
 <p>The starting screen of our 2048 game. It takes in the char g, l, c, s, or q. </p>
 
-<img src="/Diagrams/InputOutputScreens/GameScreen.PNG?raw=true" alt="In game Screen" height="350">
+<img src="/Diagrams/InputOutputScreens/cs100_2048_game_screen.png?raw=true" alt="In game Screen" height="350">
 <p>The game screen takes in the inputs wasd as directional shifts of the board. </p>
 
-<img src="/Diagrams/InputOutputScreens/GameOverScreen.PNG?raw=true" alt="Game over Screen" height="350">
+<img src="/Diagrams/InputOutputScreens/cs100_2048_game_over_screen.png?raw=true" alt="Game over Screen" height="350">
 <p>The game over takes in l, c, or m to advance to the next screen. </p>
 
 <img src="/Diagrams/InputOutputScreens/LeaderboardScreen.PNG?raw=true" alt="Leaderboard Screen" height="350">
