@@ -11,7 +11,7 @@ using namespace std;
 
 char userChoice;
 string userName;
-int testScore;
+int finalScore;
 
 const int SIZE = 5;
 string namesArray[SIZE];
@@ -116,6 +116,8 @@ void callCredits(Credits& gameCredits) {
 void callGame() {
     GameManager gameManager;
     gameManager.performGameLoop();
+
+    finalScore = gameManager.returnGameScore();
     
     /* //To show leaderboard and scoring works if game loop had no bugs
     cout << "\n \n \n \n \n \n \n \n \nIN GAME, enter score to test game over/leaderboard" << endl;
@@ -144,7 +146,7 @@ void callGameOver(GameOver& gameEnd) {
         else if(userChoice == 'l') {
             cout << "Enter your name onto leaderboard!" << endl;
             cin >> userName;
-            addScore(namesArray, scoresArray, count, SIZE, userName, testScore);
+            addScore(namesArray, scoresArray, count, SIZE, userName, finalScore);
             callLeaderboard();
         }
         else if(userChoice == 'm') {
