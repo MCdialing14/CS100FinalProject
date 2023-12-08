@@ -60,9 +60,27 @@ The change here is the inclusion of another public function that can return the 
  > * Make sure your README file and Project board are up-to-date reflecting the current status of your project (e.g. any changes that you have made during the project such as changes to your class diagram). Previous versions should still be visible through your commit history. 
  
  ## Screenshots
- > Screenshots of the input/output after running your application
+ <img src="/Diagrams/InputOutputScreens/StartingScreen.PNG?raw=true" alt="Start Screen" height="350">
+<p>The starting screen of our 2048 game. It takes in the char g, l, c, s, or q. </p>
+
+<img src="/Diagrams/InputOutputScreens/GameScreen.PNG?raw=true" alt="In game Screen" height="350">
+<p>The game screen takes in the inputs wasd as directional shifts of the board. </p>
+
+<img src="/Diagrams/InputOutputScreens/GameOverScreen.PNG?raw=true" alt="Game over Screen" height="350">
+<p>The game over takes in l, c, or m to advance to the next screen. </p>
+
+<img src="/Diagrams/InputOutputScreens/LeaderboardScreen.PNG?raw=true" alt="Leaderboard Screen" height="350">
+<p>The leaderboard takes in a name if called from game over and displays it in a ranking list. Then you can return to menu or view credits.</p>
+
+<img src="/Diagrams/InputOutputScreens/CreditsScreen.PNG?raw=true" alt="Credits Screen" height="350">
+<p>The credits screen displays the names of th developers and can return back to main menu. </p>
+
+<img src="/Diagrams/InputOutputScreens/SettingsScreen.PNG?raw=true" alt="Settings Screen" height="350">
+<p>The settings takes a multitude of inputs and updates values based on user inputs. </p>
+
  ## Installation/Usage
- > Instructions on installing and running your application
+ <p>We use cmake . in the root directory and run make to create the executable in our bin folder. Then we run the command "./bin/game" to run and play the game.</p>
+
  ## Testing
- > How was your project tested/validated? If you used CI, you should have a "build passing" badge in this README.
+ <p>We mostly ran the program through g-test and created a test for every function of the project. Some functions need more testing which we will do in more branches.</p>
  
