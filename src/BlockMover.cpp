@@ -23,13 +23,13 @@ BlockMover::~BlockMover()
 /// @brief Attempts to move all blocks in the direction provided
 bool BlockMover::PerformMove(Direction direction)
 {
-    bool successfulShift = false;
+    bool success = false;
 
     switch (direction)
     {
         case Direction::NORTH:
             RotateBoard();
-            successfulShift = PerformMoveHelper();
+            success = PerformMoveHelper();
             RotateBoard();
             RotateBoard();
             RotateBoard();
@@ -37,7 +37,7 @@ bool BlockMover::PerformMove(Direction direction)
         case Direction::EAST:
             RotateBoard();
             RotateBoard();
-            successfulShift = PerformMoveHelper();
+            success = PerformMoveHelper();
             RotateBoard();
             RotateBoard();
             break;
@@ -45,16 +45,16 @@ bool BlockMover::PerformMove(Direction direction)
             RotateBoard();
             RotateBoard();
             RotateBoard();
-            successfulShift = PerformMoveHelper();
+            success = PerformMoveHelper();
             RotateBoard();
             break;
         case Direction::WEST:
-            successfulShift = PerformMoveHelper();
+            success = PerformMoveHelper();
             break;
         default:
             throw std::invalid_argument("Unrecognized Direction enum value");
     }
-    return successfulShift;
+    return success;
 }
 
 /// @brief Rotates the board 90 degrees counter clock-wise. Used for shifting blocks in directions other than left.
@@ -88,14 +88,14 @@ void BlockMover::RotateBoard()
 //-- HELPERS
 
 /// @brief Performs a shift, merge, then shift in the left direction mimicing the behavior you'd expect in a regular 2048 game.
-/// @returns Whether bool for whether a shift or merge occured
+/// @returns Bool for whether a shift or merge occured
 bool BlockMover::PerformMoveHelper()
 {
     bool movedOrCombined = false;
 
-    movedOrCombined = movedOrCombined || blockShifter->ShiftLeft();
-    movedOrCombined = movedOrCombined || blockMerger->MergeLeft();
-    movedOrCombined = movedOrCombined || blockShifter->ShiftLeft();
+    movedOrCombined = blockShifter->ShiftLeft() || movedOrCombined;
+    movedOrCombined = blockMerger->MergeLeft() || movedOrCombined;
+    movedOrCombined = blockShifter->ShiftLeft() || movedOrCombined;
 
     return movedOrCombined;
 }

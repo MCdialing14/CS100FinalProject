@@ -23,14 +23,14 @@ bool BlockShifter::ShiftLeft()
         }
 
         // replace the row with the ordered vector
-        for (auto i = 0; i < nonNullBlocks.size(); i++)
+        for (unsigned i = 0; i < nonNullBlocks.size(); i++)
         {
             Coordinate currentCoord = Coordinate(i, y);
             board->SetBlock(nonNullBlocks.at(i), currentCoord);
         }
 
         // replace rest of row with nullptr
-        for (auto i = nonNullBlocks.size(); i < board->GetSize(); i++)
+        for (unsigned i = nonNullBlocks.size(); i < board->GetSize(); i++)
         {
             board->SetBlock(nullptr, Coordinate(i, y));
         }
