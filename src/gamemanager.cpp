@@ -14,6 +14,8 @@ GameManager::~GameManager() {
 
 void GameManager::updateGameDisplay() {
     Block *blockPointer;
+
+    cout << endl;
     for (int y = board->GetSize() - 1; y >= 0; --y) 
     { 
         for (int x = 0; x < 4; ++x) 
@@ -21,11 +23,14 @@ void GameManager::updateGameDisplay() {
             blockPointer = board->GetBlock(Coordinate(x, y));
             if (blockPointer == nullptr) 
             {
-                cout << "x ";
+                cout << "x  ";
+            }
+            else if (blockPointer->GetValue() > 8) {
+                cout << blockPointer->GetValue() << " ";
             }
             else
             {
-                cout << blockPointer->GetValue() << " ";
+                cout << blockPointer->GetValue() << "  ";
             }
         }
         cout << endl;
