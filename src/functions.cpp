@@ -50,7 +50,7 @@ void addScore(std::string namesArray[], int scoresArray[], int &count, int size,
             count++;
         }
         else {
-            //Replace low score if the loader board is filled
+            //Replace low score if the leader board is filled
             if (count == size){
                 if (score > scoresArray [0]) {
                     scoresArray[0] = score;
