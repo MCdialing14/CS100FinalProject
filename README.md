@@ -16,19 +16,19 @@ A 2048 C++ game is interesting to us because we all have an interest of making g
 <img src="/Diagrams/ScreenLayout/MainMenu.png?raw=true" alt="Main Menu" height="350">
 <p>This menu is intended to be a center of control for the game. From here, you can input which menu you would like to go to or quit the program. Many menus lead back to here.</p>
 
-<img src="/Diagrams/ScreenLayout/GameMenu.png?raw=true" alt="Game Menu" height="350">
+<img src="/Diagrams/ScreenLayout/UpdatedInGame.PNG?raw=true" alt="Game Menu" height="350">
 <p>This menu is where the actual gameplay will occur. The user will input which direction they would like the blocks to slide, and they will either combine or collide, and the game area will update to reflect that. The user will also have the option to quit to the menu available at all times.</p>
 
-<img src="/Diagrams/ScreenLayout/GameOverMenu.png?raw=true" alt="Game Over Menu" height="350">
+<img src="/Diagrams/ScreenLayout/UpdatedGameOver.PNG?raw=true" alt="Game Over Menu" height="350">
 <p>This menu will occur when the game has concluded (blocks have filled all spaces on the board and no possible moves that could combine). The final score will be calculated and displayed from the last board state. The user can input whether to start a new game, view the leaderboard, or return to the menu from here.</p>
 
-<img src="/Diagrams/ScreenLayout/LeaderboardMenu.png?raw=true" alt="Leaderboard Menu" height="350">
+<img src="/Diagrams/ScreenLayout/UpdatedLeaderboard.PNG?raw=true" alt="Leaderboard Menu" height="350">
 <p>This menu will display the high scores for the game (either locally or online depending on time constraints). From here, users can input whether to return to the main menu or view credits.</p>
 
 <img src="/Diagrams/ScreenLayout/CreditsMenu.png?raw=true" alt="Credits Menu" height="350">
 <p>This is a simple menu that can be accessed either through the main menu or after a game. It simply directs back to the main menu upon input so users can start a new game or do any of the other options from there.</p>
 
-<img src="/Diagrams/ScreenLayout/SettingsMenu.png?raw=true" alt="Settings Menu" height="350">
+<img src="/Diagrams/ScreenLayout/UpdatedSettings.PNG?raw=true" alt="Settings Menu" height="350">
 <p>This menu allows users to specify the volume level (from 0 to 100) to play background music and sound effects at. The changes will only be staged until they are applied with the apply input, and the user can return to default settings if they make an unwanted change. It navigates back to the main menu.</p>
 
 ## Class Diagram
