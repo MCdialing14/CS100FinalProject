@@ -44,11 +44,10 @@ bool GameManager::isGameLost() { // returns true if the player lost, otherwise r
     // loop to find possible horizontal merges
     for (int y = 0; y < board->GetSize(); y++)
     {
-        Block* previousBlock = board->GetBlock(Coordinate(0, y));
         for (int x = 1; x < board->GetSize(); x++)
         {
-            Coordinate currentCoord = Coordinate(x, y);
-            Block* currentBlock = board->GetBlock(currentCoord);
+            Block* previousBlock = board->GetBlock(Coordinate(x - 1, y));
+            Block* currentBlock = board->GetBlock(Coordinate(x, y));
             if (previousBlock != nullptr && currentBlock != nullptr)
             {
                 if (previousBlock->GetValue() == currentBlock->GetValue())
@@ -62,11 +61,10 @@ bool GameManager::isGameLost() { // returns true if the player lost, otherwise r
     // loop to find possible vertical merges
     for (int x = 0; x < board->GetSize(); x++)
     {
-        Block* previousBlock = board->GetBlock(Coordinate(x, 0));
         for (int y = 1; y < board->GetSize(); y++)
         {
-            Coordinate currentCoord = Coordinate(x, y);
-            Block* currentBlock = board->GetBlock(currentCoord);
+            Block* previousBlock = board->GetBlock(Coordinate(x, y - 1));
+            Block* currentBlock = board->GetBlock(Coordinate(x, y));
             if (previousBlock != nullptr && currentBlock != nullptr)
             {
                 if (previousBlock->GetValue() == currentBlock->GetValue())
