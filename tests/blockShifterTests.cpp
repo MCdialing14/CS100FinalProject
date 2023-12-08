@@ -88,19 +88,19 @@ TEST(BlockShifterTests, ShiftFromMiddle)
 
     for (int y = 0; y < board.GetSize(); y++)
     {           
-        Block* originBlock = new Block(2);
-        board.AddBlock(originBlock, Coordinate(0, y));
+        Block* secondBlock = new Block(2);
+        board.AddBlock(secondBlock, Coordinate(1, y));
 
-        Block* endBlock = new Block(2);
-        board.AddBlock(endBlock, Coordinate(3, y));
+        Block* thirdBlock = new Block(2);
+        board.AddBlock(thirdBlock, Coordinate(2, y));
 
-        // BEFORE SHIFT: 2 x x 2
+        // BEFORE SHIFT: x 2 2 x
         ASSERT_TRUE(blockShifter.ShiftLeft());
         // AFTER SHIFT (hopefully): 2 2 x x
 
         // make sure the values on that row are 2, 2, x, x
-        EXPECT_EQ(originBlock, board.GetBlock(Coordinate(0, y)));
-        EXPECT_EQ(endBlock, board.GetBlock(Coordinate(1, y)));
+        EXPECT_EQ(secondBlock, board.GetBlock(Coordinate(0, y)));
+        EXPECT_EQ(thirdBlock, board.GetBlock(Coordinate(1, y)));
         EXPECT_EQ(nullptr, board.GetBlock(Coordinate(2, y)));
         EXPECT_EQ(nullptr, board.GetBlock(Coordinate(3, y)));
     }

@@ -3,6 +3,7 @@
 #include "../header/Block.h"
 #include "../header/Coordinate.h"
 #include <stdexcept>
+#include <iostream>
 
 /// @brief Merges all blocks with the block to their left 
 bool BlockMerger::MergeLeft()
