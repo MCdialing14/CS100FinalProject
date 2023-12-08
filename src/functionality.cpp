@@ -116,6 +116,7 @@ void callCredits(Credits& gameCredits) {
 void callGame() {
     GameManager gameManager;
     gameManager.performGameLoop();
+
     finalScore = gameManager.returnGameScore();
 }
 
