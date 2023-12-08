@@ -88,14 +88,14 @@ void BlockMover::RotateBoard()
 //-- HELPERS
 
 /// @brief Performs a shift, merge, then shift in the left direction mimicing the behavior you'd expect in a regular 2048 game.
-/// @returns Whether bool for whether a shift or merge occured
+/// @returns Bool for whether a shift or merge occured
 bool BlockMover::PerformMoveHelper()
 {
     bool movedOrCombined = false;
 
-    movedOrCombined = movedOrCombined || blockShifter->ShiftLeft();
-    movedOrCombined = movedOrCombined || blockMerger->MergeLeft();
-    movedOrCombined = movedOrCombined || blockShifter->ShiftLeft();
+    movedOrCombined = blockShifter->ShiftLeft() || movedOrCombined;
+    movedOrCombined = blockMerger->MergeLeft() || movedOrCombined;
+    movedOrCombined = blockShifter->ShiftLeft() || movedOrCombined;
 
     return movedOrCombined;
 }
